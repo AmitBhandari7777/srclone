@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mysql-container:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=spring-reddit-clone
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+
+  spring-boot-container:
+    image: demo:latest
+    ports:
+      - 8082:8082
+    depends_on:
+      - mysql-container
